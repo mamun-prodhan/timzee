@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo_1.webp";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { FaUser, FaSearch } from "react-icons/fa";
@@ -51,7 +51,7 @@ const MenuBar = () => {
     <div className="shadow-md w-full ">
       <div className="bg-[#0E1D55] md:flex items-center justify-between py-4 md:px-10 px-7  ">
         <div className="font-bold text-2xl cursor-pointer flex items-center text-gray-800">
-          <img className="" src={logo} alt="" />
+          <img className="ms-10 md:ms-0" src={logo} alt="" />
         </div>
         <ul className="md:flex md:items-center gap-5 hidden">{navLinks}</ul>
         <div className="pb-12 md:pb-0 hidden md:block">
@@ -69,29 +69,22 @@ const MenuBar = () => {
         {/* for mobile responsive */}
         <div
           onClick={() => setOpen(!open)}
-          className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
+          className="text-3xl absolute left-3 top-6 cursor-pointer md:hidden z-[1000]"
         >
           {open ? (
-            <AiOutlineClose></AiOutlineClose>
+            <AiOutlineClose className="text-[#9E9FA3]"></AiOutlineClose>
           ) : (
-            <AiOutlineMenu></AiOutlineMenu>
+            <AiOutlineMenu className="text-[#9E9FA3]"></AiOutlineMenu>
           )}
         </div>
         <div
-          className={`z-[1000] md:hidden absolute bg-red-100 left-0 w-full pl-9 transition-all duration-500 ease-in ${
-            open ? "top-16 opacity-100" : "top-[-490px]"
+          className={`z-[100] md:hidden absolute bg-[#0E1D55] left-0 w-full pl-14 pt-16 transition-all duration-500 ease-in ${
+            open ? "top-0 opacity-100" : "left-[-490px]"
           } opacity-0`}
         >
           <ul className="md:flex md:items-center gap-5">{navLinks}</ul>
           <div className="pb-12 md:pb-0 flex items-center gap-5">
-            <Link to="/login">
-              <button>Login</button>
-            </Link>
-            <Link to="/register">
-              <button>Register</button>
-            </Link>
-
-            <button>Logout</button>
+            {/* footer links */}
           </div>
         </div>
       </div>
